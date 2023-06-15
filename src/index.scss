@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	body {
+		@apply bg-slate-900 font-body px-5;
+	}
+}
+
+@layer components {
+	.page-container {
+		max-width: 1280px;
+		margin-left: auto;
+		margin-right: auto;
+		@apply mx-auto;
+	}
+	.swiper-slide {
+		height: auto !important;
+	}
+}
