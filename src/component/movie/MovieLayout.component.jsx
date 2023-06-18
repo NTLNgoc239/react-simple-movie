@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieList from './MovieList.component';
+import MovieListHomePage from './MovieListHomePage.component';
 
 const MovieLayout = (props) => {
   const TYPE_OF_MOVIE = {
@@ -12,7 +12,7 @@ const MovieLayout = (props) => {
       <h2 className="text-white text-2xl font-bold capitalize mb-5">
         {TYPE_OF_MOVIE[props.type]}
       </h2>
-      <MovieList {...props}></MovieList>
+      <MovieListHomePage {...props}></MovieListHomePage>
     </section>
   );
 };

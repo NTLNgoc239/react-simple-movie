@@ -6,11 +6,10 @@ import MovieCard from "./MovieCard.component";
 import { useState } from "react";
 import { useEffect } from "react";
 
-const MovieList = (props) => {
+const MovieListHomePage = (props) => {
   const [movieListData, setMovieListData] = useState([]);
   const api = `https://api.themoviedb.org/3/movie/${props.type}?api_key=bef59305517446c6a8bb7a01450f27c2`;
   const { data } = useSWR(api, fetcher);
-  console.log(data);
   useEffect(() => {
     if (data) {
       setMovieListData(data.results);
@@ -36,4 +35,4 @@ const MovieList = (props) => {
   );
 };
 
-export default MovieList;
+export default MovieListHomePage;

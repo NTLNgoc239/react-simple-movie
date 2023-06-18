@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
 import MovieLayout from "../component/movie/MovieLayout.component";
+import MovieListPage from '../component/movie/MovieListPage.component';
+import Search from "../component/searchBar/Search.component"
 
 const Movie = () => {
   return (
     <Fragment>
-      <MovieLayout type="now_playing"></MovieLayout>
-      <MovieLayout type="popular"></MovieLayout>
-      <MovieLayout type="top_rated"></MovieLayout>
+      {/* <Search></Search> */}
+      <MovieListPage></MovieListPage>
     </Fragment>
   );
 };

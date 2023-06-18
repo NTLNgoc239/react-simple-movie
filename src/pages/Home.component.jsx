@@ -1,11 +1,13 @@
 import React, { Fragment } from 'react';
 import Banner from "../component/banner/Banner.component";
-import Movie from "./Movie.component"
+import MovieLayout from "../component/movie/MovieLayout.component"
 const Home = () => {
   return (
     <Fragment>
       <Banner></Banner>
-      <Movie></Movie>
+      <MovieLayout type="now_playing"></MovieLayout>
+      <MovieLayout type="popular"></MovieLayout>
+      <MovieLayout type="top_rated"></MovieLayout>s
     </Fragment>
   );
 };
