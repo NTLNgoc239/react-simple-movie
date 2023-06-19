@@ -13,11 +13,9 @@ const MovieListPage = () => {
     setSearchKey(e.target.value);
   };
   useEffect(() => {
-    if (searchKey) {
+    if (!searchKey) {
       const getSearchFilm = `https://api.themoviedb.org/3/search/movie?query=${searchKey}&include_adult=false&language=en-US&page=1&api_key=bef59305517446c6a8bb7a01450f27c2`;
       setUrl(getSearchFilm);
-    } else {
-      setUrl(getListFilm);
     }
   }, [searchKey]);
   return (
