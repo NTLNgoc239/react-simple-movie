@@ -1,13 +1,14 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
-import { fetcher, tmdbAPI } from "../config";
+import { fetcher, apiKey } from "../config";
 import PropertyList from "../component/property/PropertyList.component";
 import MovieCard from "../component/movie/MovieCard.component";
 import { SwiperSlide, Swiper } from "swiper/react";
 const MovieDetail = () => {
   const { movieId } = useParams();
-  const { data } = useSWR(tmdbAPI.getMovieDetail(movieId), fetcher);
+  const getDetail = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US&api_key=bef59305517446c6a8bb7a01450f27c2`;
+  const { data } = useSWR(getDetail, fetcher);
   if (!data) return;
   const { backdrop_path, poster_path, title, genres, overview } = data;
   return (
@@ -19,13 +20,13 @@ const MovieDetail = () => {
             <div
               className="w-full h-full bg-cover bg-no-repeat"
               style={{
-                backgroundImage: `url(${tmdbAPI.imageOriginal(backdrop_path)})`,
+                backgroundImage: `url(https://image.tmdb.org/t/p/original${backdrop_path})`,
               }}
             ></div>
           </div>
           <div className="w-full h-[400px] max-w-[800px] mx-auto -mt-[200px] relative z-10 mb-8">
             <img
-              src={tmdbAPI.imageOriginal(poster_path)}
+              src={`https://image.tmdb.org/t/p/original${poster_path}`}
               alt=""
               className="w-full h-full object-cover"
             />
@@ -50,8 +51,10 @@ const MovieDetail = () => {
 };
 
 const MovieCredits = () => {
+  // https://api.themoviedb.org/3/movie/1010581/credits?language=en-US
   const { movieId } = useParams();
-  const { data } = useSWR(tmdbAPI.getMovieCasts(movieId), fetcher);
+  const getCredits = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US&api_key=${apiKey}`;
+  const { data } = useSWR(getCredits, fetcher);
   if (!data) return;
   const { cast } = data;
   return (
@@ -66,7 +69,7 @@ const MovieCredits = () => {
             <img
               src={
                 item.profile_path
-                  ? tmdbAPI.imageOriginal(item.profile_path)
+                  ? `https://image.tmdb.org/t/p/original${item.profile_path}`
                   : "https://banffventureforum.com/wp-content/uploads/2019/08/No-Image.png"
               }
               alt=""
@@ -81,8 +84,10 @@ const MovieCredits = () => {
 };
 
 const MovieVideo = () => {
+  //
   const { movieId } = useParams();
-  const { data } = useSWR(tmdbAPI.getMovieVideo(movieId), fetcher);
+  const getCredits = `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US&api_key=${apiKey}`;
+  const { data } = useSWR(getCredits, fetcher);
   if (!data) return;
   const { results } = data;
   return (
@@ -114,7 +119,8 @@ const MovieVideo = () => {
 
 const MovieSimilar = () => {
   const { movieId } = useParams();
-  const { data } = useSWR(tmdbAPI.getMovieSimilar(movieId), fetcher);
+  const getCredits = `https://api.themoviedb.org/3/movie/${movieId}/similar?language=en-US&api_key=${apiKey}`;
+  const { data } = useSWR(getCredits, fetcher);
   if (!data) return;
   const { results } = data;
   return (
@@ -122,7 +128,7 @@ const MovieSimilar = () => {
       <h2 className="text-white text-xl font-bold p-4 bg-pink-500 w-auto inline-block mb-10">
         Similar Movie
       </h2>
-      <div className="movie-list pb-3">
+      <div className="movie-list">
         <Swiper
           className="grid grid-cols-4 gap-10"
           slidesPerView={4}
@@ -132,7 +138,7 @@ const MovieSimilar = () => {
         >
           {results &&
             results.map((item, idx) => (
-              <SwiperSlide key={item.id} className="swiper-slide mb-3">
+              <SwiperSlide key={item.id} className="swiper-slide">
                 <MovieCard {...item}></MovieCard>
               </SwiperSlide>
             ))}

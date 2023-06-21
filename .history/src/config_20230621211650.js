@@ -8,7 +8,4 @@ export const tmdbAPI = {
     `${tmdbEndpoint}/${movieId}/credits?api_key=${apiKey}`,
   getMovieVideo: (movieId) =>
     `${tmdbEndpoint}/${movieId}/videos?api_key=${apiKey}`,
-  getMovieSimilar: (movieId) =>
-    `${tmdbEndpoint}/${movieId}/similar?api_key=${apiKey}`,
-  imageOriginal: (url) => `https://image.tmdb.org/t/p/original${url}`,
 };

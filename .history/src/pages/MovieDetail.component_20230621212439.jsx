@@ -66,7 +66,7 @@ const MovieCredits = () => {
             <img
               src={
                 item.profile_path
-                  ? tmdbAPI.imageOriginal(item.profile_path)
+                  ? tmdbAPI.imageOriginal(item.poster_path)
                   : "https://banffventureforum.com/wp-content/uploads/2019/08/No-Image.png"
               }
               alt=""

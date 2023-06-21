@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../button/Button.component";
-import { tmdbAPI } from "../../config";
 
 const MovieCard = (props) => {
   const { poster_path, title, release_date, vote_average, id } = props;
@@ -14,7 +13,7 @@ const MovieCard = (props) => {
       <img
         src={
           poster_path
-            ? tmdbAPI.imageOriginal(poster_path)
+            ? `https://image.tmdb.org/t/p/original${poster_path}`
             : "https://suckhoedoisong.qltns.mediacdn.vn/324455921873985536/2021/12/20/nguoinhen-1639982903115922037303.jpeg"
         }
         alt=""
@@ -29,7 +28,7 @@ const MovieCard = (props) => {
             <span>*</span>
           </div>
         </div>
-        <Button handleNavigate={handleNavigate}></Button>
+        <Button></Button>
       </div>
     </div>
   );

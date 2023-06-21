@@ -1,15 +1,15 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import useSWR from "swr";
-import { fetcher, tmdbAPI } from "../../config";
+import { fetcher } from "../../config";
 import MovieCard from "./MovieCard.component";
 import { useState } from "react";
 import { useEffect } from "react";
 
 const MovieListHomePage = (props) => {
   const [movieListData, setMovieListData] = useState([]);
-  // const api = `https://api.themoviedb.org/3/movie/${props.type}?api_key=bef59305517446c6a8bb7a01450f27c2`;
-  const { data } = useSWR(tmdbAPI.getMovieByType(props.type), fetcher);
+  const api = `https://api.themoviedb.org/3/movie/${props.type}?api_key=bef59305517446c6a8bb7a01450f27c2`;
+  const { data } = useSWR(api, fetcher);
   useEffect(() => {
     if (data) {
       setMovieListData(data.results);

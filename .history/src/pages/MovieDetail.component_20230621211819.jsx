@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
-import { fetcher, tmdbAPI } from "../config";
+import { fetcher, apiKey, tmdbAPI } from "../config";
 import PropertyList from "../component/property/PropertyList.component";
 import MovieCard from "../component/movie/MovieCard.component";
 import { SwiperSlide, Swiper } from "swiper/react";
@@ -19,13 +19,13 @@ const MovieDetail = () => {
             <div
               className="w-full h-full bg-cover bg-no-repeat"
               style={{
-                backgroundImage: `url(${tmdbAPI.imageOriginal(backdrop_path)})`,
+                backgroundImage: `url(https://image.tmdb.org/t/p/original${backdrop_path})`,
               }}
             ></div>
           </div>
           <div className="w-full h-[400px] max-w-[800px] mx-auto -mt-[200px] relative z-10 mb-8">
             <img
-              src={tmdbAPI.imageOriginal(poster_path)}
+              src={`https://image.tmdb.org/t/p/original${poster_path}`}
               alt=""
               className="w-full h-full object-cover"
             />
@@ -66,7 +66,7 @@ const MovieCredits = () => {
             <img
               src={
                 item.profile_path
-                  ? tmdbAPI.imageOriginal(item.profile_path)
+                  ? `https://image.tmdb.org/t/p/original${item.profile_path}`
                   : "https://banffventureforum.com/wp-content/uploads/2019/08/No-Image.png"
               }
               alt=""
