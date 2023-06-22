@@ -1,13 +1,12 @@
 import React from "react";
 import useSWR from "swr";
-import { fetcher } from "../../config";
-import PropertyList from "../property/PropertyList.component";
+import { fetcher, tmdbAPI } from "../../config";
+import PropertyList from "component/property/PropertyList.component";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useNavigate } from "react-router-dom";
 
 const Banner = () => {
-  const getFilm = `https://api.themoviedb.org/3/movie/upcoming?api_key=bef59305517446c6a8bb7a01450f27c2`;
-  const { data } = useSWR(getFilm, fetcher);
+  const { data } = useSWR(tmdbAPI.getMovieByType("upcoming"), fetcher);
   const movie = data?.results || [];
   return (
     <section className="banner h-[500px] page-container mb-10">

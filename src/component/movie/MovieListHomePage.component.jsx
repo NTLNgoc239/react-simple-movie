@@ -2,7 +2,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import useSWR from "swr";
 import { fetcher, tmdbAPI } from "../../config";
-import MovieCard from "./MovieCard.component";
+import MovieCard from "component/movie/MovieCard.component";
 import { useState } from "react";
 import { useEffect } from "react";
 

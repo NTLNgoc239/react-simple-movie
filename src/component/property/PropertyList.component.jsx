@@ -1,5 +1,5 @@
 import React from 'react';
-import Property from './Property.component';
+import Property from 'component/property/Property.component';
 import { useParams } from 'react-router-dom';
 const PropertyList = (props) => {
   const { movieId } = useParams();

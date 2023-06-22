@@ -1,14 +1,14 @@
 import React, { Fragment, useEffect, useState } from "react";
-import MovieCard from "./MovieCard.component";
+import MovieCard from "component/movie/MovieCard.component";
 import useSWR from "swr";
-import { fetcher } from "../../config";
-import useDebounce from "../../hooks/useDebounce";
+import { fetcher, apiKey } from "../../config";
+import useDebounce from "hooks/useDebounce";
 import ReactPaginate from "react-paginate";
 
 const MovieListPage = () => {
   const [nextPage, setNextPage] = useState(1);
   const [url, setUrl] = useState(
-    `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${nextPage}&sort_by=popularity.desc&api_key=bef59305517446c6a8bb7a01450f27c2`
+    `https://api.themoviedb.org/3/discover/movie?page=${nextPage}&api_key=${apiKey}`
   );
   const [searchKey, setSearchKey] = useState("");
   const searchKeyDebounce = useDebounce(searchKey, 500);
@@ -29,8 +29,7 @@ const MovieListPage = () => {
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % pageNumber.length;
     console.log(
-      `User requested page number ${
-        event.selected + 1
+      `User requested page number ${event.selected + 1
       }, which is offset ${newOffset}`
     );
     setItemOffset(newOffset);
@@ -39,11 +38,11 @@ const MovieListPage = () => {
   useEffect(() => {
     if (searchKeyDebounce) {
       setUrl(
-        `https://api.themoviedb.org/3/search/movie?query=${searchKeyDebounce}&include_adult=false&language=en-US&page=${nextPage}&api_key=bef59305517446c6a8bb7a01450f27c2`
+        `https://api.themoviedb.org/3/search/movie?query=${searchKeyDebounce}&page=${nextPage}&api_key=${apiKey}`
       );
     } else {
       setUrl(
-        `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${nextPage}&sort_by=popularity.desc&api_key=bef59305517446c6a8bb7a01450f27c2`
+        `https://api.themoviedb.org/3/discover/movie?page=${nextPage}&api_key=${apiKey}`
       );
     }
   }, [searchKeyDebounce, nextPage]);

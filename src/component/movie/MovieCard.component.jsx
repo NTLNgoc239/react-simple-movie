@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "../button/Button.component";
+import Button from "component/button/Button.component";
 import { tmdbAPI } from "../../config";
 
 const MovieCard = (props) => {

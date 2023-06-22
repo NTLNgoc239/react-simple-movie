@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieListHomePage from './MovieListHomePage.component';
+import MovieListHomePage from 'component/movie/MovieListHomePage.component';
 
 const MovieLayout = (props) => {
   const TYPE_OF_MOVIE = {
