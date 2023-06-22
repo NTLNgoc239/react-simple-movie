@@ -3,7 +3,6 @@ import MovieCard from "component/movie/MovieCard.component";
 import useSWRInifite from "swr/infinite";
 import { fetcher, apiKey } from "../../config";
 import useDebounce from "hooks/useDebounce";
-import ReactPaginate from "react-paginate";
 
 const MovieListPage = () => {
   const [nextPage, setNextPage] = useState(1);

@@ -2,6 +2,7 @@ import { Fragment, lazy, Suspense } from "react";
 import "swiper/css";
 import { Route, Routes } from "react-router-dom";
 import Main from "pages/Main.component";
+import NotFound from "component/404_page/NotFound.component";
 // import Home from "pages/Home.component";
 // import Movie from "pages/Movie.component";
 // import MovieDetail from "pages/MovieDetail.component";
@@ -22,6 +23,7 @@ function App() {
               element={<MovieDetail></MovieDetail>}
             ></Route>
           </Route>
+          <Route path="*" element={<NotFound></NotFound>}></Route>
         </Routes>
       </Suspense>
     </Fragment>
